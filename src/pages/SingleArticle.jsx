@@ -16,7 +16,6 @@ const SingleArticle = () => {
           //   data,
         } = await getArticleById(article_id);
         setArticle(receivedArticles);
-        console.log(receivedArticles, "hello");
         setIsLoading(false);
       } catch (err) {
         console.log(err);
