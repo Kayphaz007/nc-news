@@ -13,7 +13,6 @@ const Articles = () => {
           data: { articles: receivedArticles },
         } = await getAllArticles();
         setArticles(receivedArticles);
-        console.log(receivedArticles, "hello");
         setIsLoading(false);
       } catch (err) {
         console.log(err);

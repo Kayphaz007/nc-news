@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
 import { BsHandThumbsUp } from "react-icons/bs";
+import Comments from "../components/Comments";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState("");
@@ -16,7 +17,6 @@ const SingleArticle = () => {
           //   data,
         } = await getArticleById(article_id);
         setArticle(receivedArticles);
-        console.log(receivedArticles, "hello");
         setIsLoading(false);
       } catch (err) {
         console.log(err);
@@ -44,20 +44,25 @@ const SingleArticle = () => {
     votes,
   } = article;
   return (
-    <section>
-      <header className="card-header">
-        <p>{author}</p>
-        <p>{created_at.slice(0, 10)}</p>
-      </header>
-      <main>
-        <h1>{title}</h1>
-        <img className="single-image" src={article_img_url} />
-        <p>{body}</p>
-      </main>
-      <footer>
-        <BsHandThumbsUp /> {votes}
-      </footer>
-    </section>
+    <>
+      <section>
+        <header className="card-header">
+          <p>{author}</p>
+          <p>{created_at.slice(0, 10)}</p>
+        </header>
+        <main>
+          <h1>{title}</h1>
+          <img className="single-image" src={article_img_url} />
+          <p>{body}</p>
+        </main>
+        <footer>
+          <BsHandThumbsUp /> {votes}
+        </footer>
+      </section>
+      <section>
+        <Comments />
+      </section>
+    </>
   );
 };
 

@@ -7,6 +7,10 @@
 body {
   padding: 5px;
 }
+
+h2 {
+  margin: 10px;
+}
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -32,4 +36,9 @@ body {
 
 .articleCard {
   border-bottom: 2px solid black;
+}
+
+.comment-card {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
 }
