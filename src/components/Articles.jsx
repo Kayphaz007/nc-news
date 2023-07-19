@@ -32,9 +32,11 @@ const Articles = () => {
   }
   return (
     <>
-      {articles.map((article) => {
-        return <ArticleCard key={article.article_id} articleData={article} />;
-      })}
+      <section className="card-group">
+        {articles.map((article) => {
+          return <ArticleCard key={article.article_id} articleData={article} />;
+        })}
+      </section>
     </>
   );
 };
