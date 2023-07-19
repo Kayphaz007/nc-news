@@ -19,7 +19,7 @@ const ArticleCard = ({
         <p>{created_at.slice(0, 10)}</p>
       </header>
       <main>
-        <p>{title}</p>
+        <h2>{title}</h2>
         <img src={article_img_url} />
       </main>
       <footer>

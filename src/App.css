@@ -19,5 +19,14 @@ footer {
 }
 
 .articleCard {
-  border-bottom: 2px solid black;
+  border: 0.5px solid black;
+  padding: 10px;
+  flex: 1 1 25rem;
+}
+
+.card-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 10px 20px;
 }
