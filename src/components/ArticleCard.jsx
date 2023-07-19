@@ -1,4 +1,3 @@
-import React from "react";
 import { BsChatText, BsHandThumbsUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -22,7 +21,7 @@ const ArticleCard = ({
       </header>
       <Link to={`/articles/${article_id}`}>
         <main className="card-main">
-          <p>{title}</p>
+          <h2>{title}</h2>
           <img className="card-img" src={article_img_url} />
         </main>
       </Link>
