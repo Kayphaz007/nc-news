@@ -1,14 +1,17 @@
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Articles from "./components/Articles";
+import SingleArticle from "./pages/SingleArticle";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/articles" element={<Articles />} />
-    </Routes>
+    <>
+      <Link to={"/"}>Home</Link>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
+      </Routes>
+    </>
   );
 }
 
