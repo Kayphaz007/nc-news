@@ -6,7 +6,7 @@ const baseApi = axios.create({
 
 export async function getAllArticles() {
   try {
-    const result = baseApi.get("/articles");
+    const result = await baseApi.get("/articles");
     return result;
   } catch (err) {
     console.log(err);
@@ -14,7 +14,16 @@ export async function getAllArticles() {
 }
 export async function getArticleById(article_id) {
   try {
-    const result = baseApi.get(`/articles/${article_id}`);
+    const result = await baseApi.get(`/articles/${article_id}`);
+    return result;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function getAllComments(article_id) {
+  try {
+    const result = await baseApi.get(`articles/${article_id}/comments`);
     return result;
   } catch (err) {
     console.log(err);
