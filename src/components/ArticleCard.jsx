@@ -64,13 +64,13 @@ const ArticleCard = ({
           {comment_count}
         </p>
         <p className="votes">
-          <i onClick={increaseVote}>
+          <button onClick={increaseVote}>
             <BsHandThumbsUp />
-          </i>
+          </button>
           {voteCount}
-          <i onClick={decreaseVote}>
+          <button onClick={decreaseVote}>
             <BsHandThumbsDown />
-          </i>
+          </button>
         </p>
       </footer>
     </section>
