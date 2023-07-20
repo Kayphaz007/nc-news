@@ -31,6 +31,7 @@ const Comments = () => {
   if (isError) {
     return <p>Error..</p>;
   }
+  //   show "no comments" for articles without comments
   if (comments.length === 0) {
     return <p>No comments to show - why not be the first to add one?</p>;
   }
