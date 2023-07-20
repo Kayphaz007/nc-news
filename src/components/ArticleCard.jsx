@@ -21,8 +21,7 @@ const ArticleCard = ({
       setVoteCount((prevVote) => {
         return prevVote + 1;
       });
-      const result = await increaseArticleVote(article_id);
-      console.log(result, "****");
+      await increaseArticleVote(article_id);
     } catch (err) {
       console.log(err);
       setVoteCount(() => {
@@ -36,8 +35,7 @@ const ArticleCard = ({
       setVoteCount((prevVote) => {
         return prevVote - 1;
       });
-      const result = await decreaseArticleVote(article_id);
-      console.log(result, "****");
+      await decreaseArticleVote(article_id);
     } catch (err) {
       console.log(err);
       setVoteCount(() => {
