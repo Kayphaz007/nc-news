@@ -1,3 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 5px;
+}
+
+h2 {
+  margin: 10px;
+}
 .card-header {
   display: flex;
   justify-content: space-between;
@@ -32,4 +45,9 @@
   flex-flow: row wrap;
   justify-content: center;
   gap: 10px 20px;
+}
+
+.comment-card {
+  margin-bottom: 20px;
+  border-bottom: 1px solid black;
 }
