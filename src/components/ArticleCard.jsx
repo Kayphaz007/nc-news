@@ -1,5 +1,7 @@
-import { BsChatText, BsHandThumbsUp } from "react-icons/bs";
+import { BsChatText, BsHandThumbsDown, BsHandThumbsUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { decreaseArticleVote, increaseArticleVote } from "../utils/api";
+import { useState } from "react";
 
 const ArticleCard = ({
   articleData: {
@@ -13,6 +15,36 @@ const ArticleCard = ({
     votes,
   },
 }) => {
+  const [voteCount, setVoteCount] = useState(votes);
+  async function increaseVote() {
+    try {
+      setVoteCount((prevVote) => {
+        return prevVote + 1;
+      });
+      const result = await increaseArticleVote(article_id);
+      console.log(result, "****");
+    } catch (err) {
+      console.log(err);
+      setVoteCount(() => {
+        return votes;
+      });
+      window.alert("There was an error");
+    }
+  }
+  async function decreaseVote() {
+    try {
+      setVoteCount((prevVote) => {
+        return prevVote - 1;
+      });
+      const result = await decreaseArticleVote(article_id);
+      console.log(result, "****");
+    } catch (err) {
+      console.log(err);
+      setVoteCount(() => {
+        return votes;
+      });
+    }
+  }
   return (
     <section className="articleCard">
       <header className="card-header">
@@ -31,8 +63,14 @@ const ArticleCard = ({
           <BsChatText size={20} />
           {comment_count}
         </p>
-        <p>
-          <BsHandThumbsUp /> {votes}
+        <p className="votes">
+          <i onClick={increaseVote}>
+            <BsHandThumbsUp />
+          </i>
+          {voteCount}
+          <i onClick={decreaseVote}>
+            <BsHandThumbsDown />
+          </i>
         </p>
       </footer>
     </section>

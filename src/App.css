@@ -33,3 +33,7 @@
   justify-content: center;
   gap: 10px 20px;
 }
+.votes {
+  display: flex;
+  gap: 10px;
+}
