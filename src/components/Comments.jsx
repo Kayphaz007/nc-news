@@ -31,9 +31,11 @@ const Comments = () => {
   if (isError) {
     return <p>Error..</p>;
   }
+  if (comments.length === 0) {
+    return <p>No comments to show - why not be the first to add one?</p>;
+  }
   return (
     <>
-      <h2>Comments</h2>
       {comments.map((comment) => {
         return <CommentCard key={comment.comment_id} comment={comment} />;
       })}

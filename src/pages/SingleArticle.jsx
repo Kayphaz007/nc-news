@@ -60,6 +60,7 @@ const SingleArticle = () => {
         </footer>
       </section>
       <section>
+        <h2>Comments</h2>
         <Comments />
       </section>
     </>
