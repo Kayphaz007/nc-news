@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllArticles } from "../utils/api";
 import ArticleCard from "./ArticleCard";
 
-const Articles = () => {
+const Articles = ({ topic }) => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -11,7 +11,7 @@ const Articles = () => {
       try {
         const {
           data: { articles: receivedArticles },
-        } = await getAllArticles();
+        } = await getAllArticles(topic);
         setArticles(receivedArticles);
         setIsLoading(false);
       } catch (err) {

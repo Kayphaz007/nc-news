@@ -4,12 +4,21 @@ const baseApi = axios.create({
   baseURL: "https://nc-project.onrender.com/api",
 });
 
-export async function getAllArticles() {
-  const result = baseApi.get("/articles");
-  return result;
+export async function getAllArticles(topic) {
+  try {
+    if (topic) {
+      const result = await baseApi.get(`/articles?topic=${topic}`);
+      return result;
+    } else {
+      const result = await baseApi.get("/articles");
+      return result;
+    }
+  } catch (err) {
+    return Promise.reject(err);
+  }
 }
 export async function getArticleById(article_id) {
-  const result = baseApi.get(`/articles/${article_id}`);
+  const result = await baseApi.get(`/articles/${article_id}`);
   return result;
 }
 
