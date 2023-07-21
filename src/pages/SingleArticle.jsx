@@ -18,7 +18,7 @@ const SingleArticle = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = { username: user, body: commentBody };
-      const result = await postComment(article_id, data);
+      await postComment(article_id, data);
       setCommentBody("");
       setIsLoadingComment(false);
     };
