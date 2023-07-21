@@ -8,6 +8,8 @@ const Articles = ({ topic }) => {
   const [isError, setIsError] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
+      setIsError(false);
       try {
         const {
           data: { articles: receivedArticles },
@@ -20,7 +22,7 @@ const Articles = ({ topic }) => {
       }
     };
     fetchData();
-  }, []);
+  }, [topic]);
 
   if (isLoading) {
     return <p>Loading ...</p>;
@@ -32,6 +34,7 @@ const Articles = ({ topic }) => {
   return (
     <>
       <section className="card-group">
+        <h1>{topic ? topic : "All"}</h1>
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} articleData={article} />;
         })}
