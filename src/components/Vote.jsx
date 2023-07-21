@@ -27,6 +27,7 @@ const Vote = ({ article_id, votes }) => {
       setVoteCount(() => {
         return votes;
       });
+      window.alert("There was an error");
     }
   }
   return (
