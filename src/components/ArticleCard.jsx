@@ -1,7 +1,6 @@
-import { BsChatText, BsHandThumbsDown, BsHandThumbsUp } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
+import { BsChatText } from "react-icons/bs";
 import { Link } from "react-router-dom";
-import { decreaseArticleVote, increaseArticleVote } from "../utils/api";
-import { useState } from "react";
 
 const ArticleCard = ({
   articleData: {
@@ -15,34 +14,6 @@ const ArticleCard = ({
     votes,
   },
 }) => {
-  const [voteCount, setVoteCount] = useState(votes);
-  async function increaseVote() {
-    try {
-      setVoteCount((prevVote) => {
-        return prevVote + 1;
-      });
-      await increaseArticleVote(article_id);
-    } catch (err) {
-      console.log(err);
-      setVoteCount(() => {
-        return votes;
-      });
-      window.alert("There was an error");
-    }
-  }
-  async function decreaseVote() {
-    try {
-      setVoteCount((prevVote) => {
-        return prevVote - 1;
-      });
-      await decreaseArticleVote(article_id);
-    } catch (err) {
-      console.log(err);
-      setVoteCount(() => {
-        return votes;
-      });
-    }
-  }
   return (
     <section className="articleCard">
       <header className="card-header">
@@ -62,13 +33,10 @@ const ArticleCard = ({
           {comment_count}
         </p>
         <p className="votes">
-          <button onClick={increaseVote}>
-            <BsHandThumbsUp />
-          </button>
-          {voteCount}
-          <button onClick={decreaseVote}>
-            <BsHandThumbsDown />
-          </button>
+          <i>
+            <AiFillHeart />
+          </i>
+          {votes}
         </p>
       </footer>
     </section>
