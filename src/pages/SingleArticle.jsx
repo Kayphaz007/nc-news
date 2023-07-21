@@ -7,26 +7,14 @@ import CommentInputBox from "../components/CommentInputBox";
 import { UserContext } from "../context/UserContext";
 
 const SingleArticle = () => {
-  const { user } = useContext(UserContext);
   const [article, setArticle] = useState("");
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [comments, setComments] = useState([]);
   const [commentBody, setCommentBody] = useState("");
   const [isLoadingComment, setIsLoadingComment] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = { username: user, body: commentBody };
-      await postComment(article_id, data);
-      setCommentBody("");
-      setIsLoadingComment(false);
-    };
-    if (commentBody !== "") {
-      setIsLoadingComment(true);
-      fetchData();
-    }
-  }, [commentBody]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -76,17 +64,22 @@ const SingleArticle = () => {
           <Vote article_id={article_id} votes={votes} />
         </footer>
       </section>
+      <CommentInputBox
+        setCommentBody={setCommentBody}
+        isLoadingComment={isLoadingComment}
+        setIsLoadingComment={setIsLoadingComment}
+        article_id={article_id}
+        setComments={setComments}
+      />
       <section>
         <h2>Comments</h2>
         <Comments
           commentBody={commentBody}
           isLoadingComment={isLoadingComment}
+          comments={comments}
+          setComments={setComments}
         />
       </section>
-      <CommentInputBox
-        setCommentBody={setCommentBody}
-        isLoadingComment={isLoadingComment}
-      />
     </>
   );
 };
