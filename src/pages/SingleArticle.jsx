@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById } from "../utils/api";
-import { BsHandThumbsUp } from "react-icons/bs";
 import Vote from "../components/Vote";
+import Comments from "../components/Comments";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState("");
@@ -43,20 +43,26 @@ const SingleArticle = () => {
     votes,
   } = article;
   return (
-    <section>
-      <header className="card-header">
-        <p>{author}</p>
-        <p>{created_at.slice(0, 10)}</p>
-      </header>
-      <main>
-        <h1>{title}</h1>
-        <img className="single-image" src={article_img_url} />
-        <p>{body}</p>
-      </main>
-      <footer>
-        <Vote article_id={article_id} votes={votes} />
-      </footer>
-    </section>
+    <>
+      <section>
+        <header className="card-header">
+          <p>{author}</p>
+          <p>{created_at.slice(0, 10)}</p>
+        </header>
+        <main>
+          <h1>{title}</h1>
+          <img className="single-image" src={article_img_url} />
+          <p>{body}</p>
+        </main>
+        <footer>
+          <Vote article_id={article_id} votes={votes} />
+        </footer>
+      </section>
+      <section>
+        <h2>Comments</h2>
+        <Comments />
+      </section>
+    </>
   );
 };
 
