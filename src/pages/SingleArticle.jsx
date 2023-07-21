@@ -1,10 +1,8 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getArticleById, postComment } from "../utils/api";
+import { getArticleById } from "../utils/api";
 import Vote from "../components/Vote";
 import Comments from "../components/Comments";
-import CommentInputBox from "../components/CommentInputBox";
-import { UserContext } from "../context/UserContext";
 
 const SingleArticle = () => {
   const [article, setArticle] = useState("");
