@@ -15,7 +15,6 @@ const Articles = () => {
         setArticles(receivedArticles);
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
         setIsLoading(false);
         setIsError(true);
       }
