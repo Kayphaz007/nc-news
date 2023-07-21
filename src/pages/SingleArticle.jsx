@@ -9,6 +9,10 @@ const SingleArticle = () => {
   const { article_id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [commentBody, setCommentBody] = useState("");
+  const [isLoadingComment, setIsLoadingComment] = useState(false);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -58,9 +62,21 @@ const SingleArticle = () => {
           <Vote article_id={article_id} votes={votes} />
         </footer>
       </section>
+      <CommentInputBox
+        setCommentBody={setCommentBody}
+        isLoadingComment={isLoadingComment}
+        setIsLoadingComment={setIsLoadingComment}
+        article_id={article_id}
+        setComments={setComments}
+      />
       <section>
         <h2>Comments</h2>
-        <Comments />
+        <Comments
+          commentBody={commentBody}
+          isLoadingComment={isLoadingComment}
+          comments={comments}
+          setComments={setComments}
+        />
       </section>
     </>
   );

@@ -3,9 +3,8 @@ import { getAllComments } from "../utils/api";
 import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
 
-const Comments = () => {
+const Comments = ({ commentBody, isLoadingComment, comments, setComments }) => {
   const { article_id } = useParams();
-  const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   useEffect(() => {
@@ -14,7 +13,8 @@ const Comments = () => {
         const {
           data: { comments: receivedComments },
         } = await getAllComments(article_id);
-        setComments(receivedComments);
+
+        setComments([...receivedComments.reverse()]);
         setIsLoading(false);
       } catch (err) {
         console.log(err);
