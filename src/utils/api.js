@@ -26,3 +26,20 @@ export async function postComment(article_id, data) {
     return Promise.reject(err);
   }
 }
+
+export async function increaseArticleVote(article_id) {
+  try {
+    const result = await baseApi.patch(`/articles/${article_id}`, {
+      inc_votes: 1,
+    });
+    return result;
+  } catch (err) {
+    return Promise.reject("Error");
+  }
+}
+export async function decreaseArticleVote(article_id) {
+  const result = await baseApi.patch(`/articles/${article_id}`, {
+    inc_votes: -1,
+  });
+  return result;
+}

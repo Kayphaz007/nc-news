@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleById, postComment } from "../utils/api";
-import { BsHandThumbsUp } from "react-icons/bs";
+import Vote from "../components/Vote";
 import Comments from "../components/Comments";
 import CommentInputBox from "../components/CommentInputBox";
 import { UserContext } from "../context/UserContext";
@@ -17,12 +17,10 @@ const SingleArticle = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const data = { username: user, body: commentBody };
-        const result = await postComment(article_id, data);
-        setCommentBody("");
-        setIsLoadingComment(false);
-      } catch (err) {}
+      const data = { username: user, body: commentBody };
+      const result = await postComment(article_id, data);
+      setCommentBody("");
+      setIsLoadingComment(false);
     };
     if (commentBody !== "") {
       setIsLoadingComment(true);
@@ -75,7 +73,7 @@ const SingleArticle = () => {
           <p>{body}</p>
         </main>
         <footer>
-          <BsHandThumbsUp /> {votes}
+          <Vote article_id={article_id} votes={votes} />
         </footer>
       </section>
       <section>
