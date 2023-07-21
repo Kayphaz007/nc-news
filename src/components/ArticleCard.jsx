@@ -1,4 +1,5 @@
-import { BsChatText, BsHandThumbsUp } from "react-icons/bs";
+import { AiFillHeart } from "react-icons/ai";
+import { BsChatText } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const ArticleCard = ({
@@ -31,8 +32,11 @@ const ArticleCard = ({
           <BsChatText size={20} />
           {comment_count}
         </p>
-        <p>
-          <BsHandThumbsUp /> {votes}
+        <p className="votes">
+          <i>
+            <AiFillHeart />
+          </i>
+          {votes}
         </p>
       </footer>
     </section>

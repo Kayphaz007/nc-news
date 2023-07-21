@@ -5,27 +5,27 @@ const baseApi = axios.create({
 });
 
 export async function getAllArticles() {
-  try {
-    const result = await baseApi.get("/articles");
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
+  const result = baseApi.get("/articles");
+  return result;
 }
 export async function getArticleById(article_id) {
-  try {
-    const result = await baseApi.get(`/articles/${article_id}`);
-    return result;
-  } catch (err) {
-    console.log(err);
-  }
+  const result = baseApi.get(`/articles/${article_id}`);
+  return result;
 }
 
-export async function getAllComments(article_id) {
+export async function increaseArticleVote(article_id) {
   try {
-    const result = await baseApi.get(`articles/${article_id}/comments`);
+    const result = await baseApi.patch(`/articles/${article_id}`, {
+      inc_votes: 1,
+    });
     return result;
   } catch (err) {
-    console.log(err);
+    return Promise.reject("Error");
   }
+}
+export async function decreaseArticleVote(article_id) {
+  const result = await baseApi.patch(`/articles/${article_id}`, {
+    inc_votes: -1,
+  });
+  return result;
 }
