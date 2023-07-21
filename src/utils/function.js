@@ -3,7 +3,7 @@
 export function timeSince(date) {
   const prevTime = new Date(date).getTime();
   const currentTime = new Date().getTime();
-  const timeDifference = (currentTime - prevTime) / 1000;
+  const timeDifference = Math.floor((currentTime - prevTime) / 1000);
 
   const minute = Math.floor(timeDifference / 60);
   const hour = Math.floor(minute / 60);
