@@ -3,7 +3,7 @@ import { getAllComments } from "../utils/api";
 import { useParams } from "react-router-dom";
 import CommentCard from "./CommentCard";
 
-const Comments = ({ commentBody, isLoadingComment }) => {
+const Comments = () => {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -17,12 +17,13 @@ const Comments = ({ commentBody, isLoadingComment }) => {
         setComments(receivedComments);
         setIsLoading(false);
       } catch (err) {
+        console.log(err);
         setIsLoading(false);
         setIsError(true);
       }
     };
     fetchData();
-  }, [commentBody]);
+  }, []);
   if (isLoading) {
     return <p>Loading ...</p>;
   }
@@ -39,7 +40,6 @@ const Comments = ({ commentBody, isLoadingComment }) => {
       {comments.map((comment) => {
         return <CommentCard key={comment.comment_id} comment={comment} />;
       })}
-      {isLoadingComment ? <p>Sending Comment...</p> : null}
     </>
   );
 };
